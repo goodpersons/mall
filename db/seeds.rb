@@ -7,3 +7,16 @@
 #   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
 #     MovieGenre.find_or_create_by!(name: genre_name)
 #   end
+
+20.times do 
+    Book.create!(title: Faker::Book.title,
+                 price: Faker::Number.between(from: 39.00, to: 200.00),
+                 stock: Faker::Number.between(from: 1, to: 50)
+    )
+end
+book_ids = Book.ids
+95.times do
+    Comment.create!(book_id: book_ids.sample, 
+                    content: Faker::Lorem.sentence
+    )
+end
